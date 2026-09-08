@@ -1,0 +1,1757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brief de Información: LEKO | Cúpula Systems</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #111113;
+      --primary-light: #242428;
+      --gold: #C5A869;
+      --gold-dark: #A68949;
+      --gold-light: #FBF9F5;
+      --gold-border: #E5DAC2;
+      --text: #18181B;
+      --text-muted: #52525B;
+      --border: #DCDCD8;
+      --border-focus: #C5A869;
+      --bg-alt: #F9F9F8;
+      --card-bg: #FFFFFF;
+      --radius: 4px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: var(--text);
+      background-color: #ECECEB;
+      font-size: 12.5px;
+      line-height: 1.45;
+      padding-bottom: 70px;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Barra flotante superior de herramientas */
+    .top-toolbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--primary);
+      color: #FFFFFF;
+      padding: 10px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.18);
+    }
+
+    .toolbar-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .toolbar-status {
+      font-size: 11px;
+      color: #A1A1AA;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: #10B981;
+      display: inline-block;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-tool {
+      appearance: none;
+      border: 1px solid transparent;
+      padding: 7px 14px;
+      border-radius: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+      font-family: inherit;
+    }
+
+    .btn-gold {
+      background: var(--gold);
+      color: #111113;
+    }
+    .btn-gold:hover {
+      background: var(--gold-dark);
+      color: #FFFFFF;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border-color: #3F3F46;
+      color: #FFFFFF;
+    }
+    .btn-outline:hover {
+      background: #27272A;
+      border-color: #52525B;
+    }
+
+    .btn-danger {
+      background: transparent;
+      border-color: #4B2727;
+      color: #F87171;
+    }
+    .btn-danger:hover {
+      background: #3B1C1C;
+    }
+
+    /* Contenedor principal estilo pliego A4 */
+    .document-container {
+      max-width: 900px;
+      margin: 26px auto;
+      background: #FFFFFF;
+      padding: 48px 56px;
+      box-shadow: 0 10px 35px rgba(0,0,0,0.07);
+      border-radius: 6px;
+    }
+
+    /* Encabezado y Logos */
+    .header-branding {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 2px solid var(--gold);
+      padding-bottom: 18px;
+      margin-bottom: 22px;
+    }
+
+    .brand-cupula-title {
+      font-size: 19px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: var(--primary);
+    }
+    .brand-cupula-subtitle {
+      font-size: 9.5px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--gold-dark);
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+
+    .cross-symbol {
+      font-size: 16px;
+      color: var(--gold);
+      font-weight: 300;
+    }
+
+    .logo-leko-placeholder {
+      border: 1.5px dashed var(--gold);
+      background: var(--gold-light);
+      padding: 8px 20px;
+      text-align: center;
+      border-radius: 4px;
+      min-width: 170px;
+    }
+    .leko-title {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1.2px;
+      color: var(--primary);
+    }
+    .leko-subtitle {
+      font-size: 9.5px;
+      color: var(--text-muted);
+    }
+
+    .badge-pill {
+      background: var(--primary);
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      padding: 3px 8px;
+      border-radius: 3px;
+      display: inline-block;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    h1.doc-main-title {
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+
+    .doc-main-subtitle {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      margin-bottom: 20px;
+    }
+
+    /* Avisos y Notas */
+    .callout-box {
+      border-left: 3.5px solid var(--gold);
+      background: var(--gold-light);
+      border-top: 1px solid var(--gold-border);
+      border-right: 1px solid var(--gold-border);
+      border-bottom: 1px solid var(--gold-border);
+      padding: 12px 16px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin-bottom: 18px;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+    .callout-box strong {
+      color: var(--primary);
+    }
+
+    .callout-dark {
+      border-left: 3.5px solid var(--gold);
+      background: var(--primary);
+      color: #F4F4F5;
+      padding: 14px 18px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      margin: 14px 0;
+    }
+    .callout-dark-title {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--gold);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .callout-dark-text {
+      font-size: 11.5px;
+      color: #D4D4D8;
+      line-height: 1.45;
+    }
+
+    .quick-guide-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      margin-bottom: 22px;
+      font-size: 11.5px;
+      color: var(--text-muted);
+      line-height: 1.4;
+    }
+    .quick-guide-grid strong {
+      color: var(--primary);
+    }
+
+    /* Meta barra resumen */
+    .meta-bar-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      padding: 10px 0;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 26px;
+      font-size: 11px;
+    }
+    .meta-bar-item strong {
+      display: block;
+      color: var(--primary);
+      text-transform: uppercase;
+      font-size: 10px;
+      margin-bottom: 2px;
+    }
+
+    /* Títulos de Sección */
+    .section-title {
+      font-size: 13.5px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      color: var(--primary);
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 5px;
+      margin-top: 28px;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      break-after: avoid;
+    }
+    .sec-index {
+      color: var(--gold);
+      font-weight: 800;
+      margin-right: 8px;
+      font-size: 15px;
+    }
+    .section-subtitle {
+      font-size: 11.5px;
+      color: var(--text-muted);
+      margin-bottom: 14px;
+      break-after: avoid;
+    }
+
+    /* Formularios y campos de entrada rellenables */
+    .form-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .form-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 10px;
+      break-inside: avoid;
+    }
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    .field-label {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--primary-light);
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+      margin-bottom: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .field-hint {
+      font-size: 10px;
+      font-weight: 400;
+      color: #71717A;
+      text-transform: none;
+    }
+
+    .form-input {
+      width: 100%;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background-color: var(--bg-alt);
+      padding: 7px 10px;
+      font-size: 12px;
+      color: var(--text);
+      transition: all 0.2s;
+      outline: none;
+      font-family: inherit;
+    }
+    .form-input:focus {
+      background-color: #FFFFFF;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2.5px rgba(197, 168, 105, 0.25);
+    }
+    textarea.form-input {
+      min-height: 60px;
+      resize: vertical;
+      line-height: 1.45;
+    }
+    textarea.form-input.tall {
+      min-height: 90px;
+    }
+    textarea.form-input.extra-tall {
+      min-height: 130px;
+    }
+
+    /* Grillas de Casillas de Verificación */
+    .checks-panel {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      padding: 10px 14px;
+      border-radius: var(--radius);
+      margin-bottom: 12px;
+      break-inside: avoid;
+    }
+    .checks-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 7px 16px;
+    }
+    .checks-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 7px 14px;
+    }
+    .checks-grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 7px 10px;
+    }
+
+    .check-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11.5px;
+      color: var(--text);
+      cursor: pointer;
+      user-select: none;
+    }
+    .check-item input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      accent-color: var(--primary);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    /* Tablas Editables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 8px 0 16px 0;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      break-inside: avoid;
+    }
+    table.data-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 11.5px;
+    }
+    table.data-table th {
+      background: var(--primary);
+      color: #FFFFFF;
+      text-align: left;
+      padding: 8px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      border-bottom: 2px solid var(--gold);
+    }
+    table.data-table td {
+      padding: 6px 8px;
+      border-bottom: 1px solid var(--border);
+      background-color: #FFFFFF;
+      vertical-align: middle;
+    }
+    table.data-table tr:nth-child(even) td {
+      background-color: var(--bg-alt);
+    }
+    table.data-table td input[type="text"] {
+      width: 100%;
+      border: 1px solid transparent;
+      padding: 4px 6px;
+      background: transparent;
+      font-size: 11.5px;
+      font-family: inherit;
+      border-radius: 3px;
+    }
+    table.data-table td input[type="text"]:focus {
+      background: #FFFFFF;
+      border-color: var(--gold);
+      outline: none;
+    }
+
+    /* Botón para añadir filas */
+    .btn-add-row {
+      background: #FFFFFF;
+      border: 1px dashed var(--gold);
+      color: var(--primary);
+      padding: 6px 12px;
+      font-size: 11px;
+      font-weight: 600;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: 6px;
+      margin-bottom: 14px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .btn-add-row:hover {
+      background: var(--gold-light);
+    }
+
+    /* Bloque de Cierre */
+    .closing-section {
+      text-align: center;
+      padding: 36px 20px 10px 20px;
+      margin-top: 30px;
+      border-top: 2px solid var(--gold);
+      break-inside: avoid;
+    }
+    .closing-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    .closing-text {
+      font-size: 12px;
+      color: var(--text-muted);
+      max-width: 650px;
+      margin: 0 auto 20px auto;
+      line-height: 1.6;
+    }
+
+    /* Modal emergente para avisos sin alert() */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.55);
+      z-index: 2000;
+      align-items: center;
+      justify-content: center;
+    }
+    .modal-backdrop.active {
+      display: flex;
+    }
+    .modal-box {
+      background: #FFFFFF;
+      padding: 24px;
+      border-radius: 6px;
+      max-width: 440px;
+      width: 90%;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+      border-top: 4px solid var(--gold);
+    }
+    .modal-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+    .modal-message {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 18px;
+    }
+    .modal-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+    }
+
+    /* Reglas de impresión para PDF */
+    @media print {
+      body {
+        background: #FFFFFF !important;
+        padding: 0 !important;
+      }
+      .top-toolbar, .btn-add-row {
+        display: none !important;
+      }
+      .document-container {
+        box-shadow: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+        max-width: 100% !important;
+        border-radius: 0 !important;
+      }
+      .form-input {
+        background: transparent !important;
+        border: 1px solid #C0C0BA !important;
+        color: #000000 !important;
+      }
+      .section-title {
+        break-after: avoid;
+        margin-top: 22px;
+      }
+      .table-container {
+        break-inside: avoid;
+      }
+      .checks-panel {
+        background: transparent !important;
+        border: 1px solid #CCC !important;
+      }
+      @page {
+        size: A4 portrait;
+        margin: 14mm 12mm 14mm 12mm;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCIÓN FLOTANTE -->
+  <div class="top-toolbar">
+    <div class="toolbar-brand">
+      <span>Cúpula Systems x LEKO</span>
+      <span style="font-size: 10px; opacity: 0.7; font-weight: 400;">| Brief Digital Rellenable</span>
+    </div>
+
+    <div class="toolbar-status">
+      <span class="status-dot" id="save-indicator"></span>
+      <span id="save-status-text">Guardado automático activo</span>
+    </div>
+
+    <div class="toolbar-actions">
+      <button class="btn-tool btn-outline" type="button" onclick="window.print()">
+        Guardar o Imprimir PDF
+      </button>
+      <button class="btn-tool btn-gold" type="button" onclick="exportFilledHtml()">
+        Descargar Archivo Rellenado
+      </button>
+      <button class="btn-tool btn-danger" type="button" onclick="confirmReset()">
+        Limpiar
+      </button>
+    </div>
+  </div>
+
+  <!-- DOCUMENTO PRINCIPAL -->
+  <div class="document-container" id="brief-form-wrapper">
+    <form id="brief-form" onsubmit="event.preventDefault();">
+
+      <!-- ENCABEZADO Y LOGOS -->
+      <div class="header-branding">
+        <div>
+          <div class="brand-cupula-title">CÚPULA</div>
+          <div class="brand-cupula-subtitle">Consultoría y Experiencias Digitales</div>
+        </div>
+        <div class="cross-symbol">x</div>
+        <div class="logo-leko-placeholder">
+          <div class="leko-title">LEKO</div>
+          <div class="leko-subtitle">Soluciones para Eventos</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="badge-pill">Brief de Información B2B</span>
+        <h1 class="doc-main-title">BRIEF DE INFORMACIÓN: LEKO</h1>
+        <div class="doc-main-subtitle">
+          Información necesaria para construir la nueva experiencia digital de LEKO y la plataforma interactiva LEKO Smart Events.
+        </div>
+      </div>
+
+      <div class="callout-box">
+        <strong>Propósito de este documento:</strong> Este documento nos ayudará a recopilar la información necesaria para representar fielmente a LEKO, sus servicios, catálogo, trayectoria y propuesta de valor. <strong>No es necesario utilizar lenguaje técnico:</strong> simplemente necesitamos conocer el negocio desde su perspectiva cotidiana y empresarial.
+      </div>
+
+      <!-- GUÍA RÁPIDA -->
+      <div class="quick-guide-grid">
+        <div>
+          <strong>1. Edición directa:</strong> Puede escribir directamente en las casillas de este formulario interactivo. Sus respuestas se guardan automáticamente en su navegador.<br><br>
+          <strong>2. No duplique trabajo:</strong> Si la información ya consta en archivos de Excel, PDFs o catálogos existentes, simplemente indíquelo en las secciones correspondientes y adjúntelos.
+        </div>
+        <div>
+          <strong>3. Opciones flexibles:</strong> Cuando una pregunta no aplique a su operación o se encuentre en definición, marque la casilla [No aplica] o [Por definir].<br><br>
+          <strong>4. Acompañamiento editorial:</strong> El equipo de Cúpula Systems redactará, estructurará y pulirá profesionalmente todo el copy final.
+        </div>
+      </div>
+
+      <!-- METADATOS DEL DOCUMENTO -->
+      <div class="meta-bar-grid">
+        <div class="meta-bar-item">
+          <strong>Cliente</strong>
+          LEKO (Cuenca, Ecuador)
+        </div>
+        <div class="meta-bar-item">
+          <strong>Consultora Digital</strong>
+          Cúpula Systems
+        </div>
+        <div class="meta-bar-item">
+          <strong>Proyecto</strong>
+          Web y Smart Events
+        </div>
+        <div class="meta-bar-item">
+          <strong>Formato</strong>
+          Documento Rellenable Oficial
+        </div>
+      </div>
+
+      <!-- SECCIÓN 01 -->
+      <h2 class="section-title"><span class="sec-index">01</span> Información General</h2>
+      <div class="section-subtitle">Datos oficiales de identificación comercial y contacto para el nuevo sitio web.</div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">Nombre comercial de la empresa:</label>
+          <input type="text" class="form-input" name="sec1_nombre_comercial">
+        </div>
+        <div class="form-group">
+          <label class="field-label">¿Cómo desean que aparezca el nombre públicamente en la web?:</label>
+          <input type="text" class="form-input" name="sec1_nombre_publico">
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">
+            <span>Razón social y RUC:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec1_razon_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec1_razon_social">
+        </div>
+        <div class="form-group">
+          <label class="field-label">Persona responsable del proyecto en LEKO:</label>
+          <input type="text" class="form-input" name="sec1_persona_responsable">
+        </div>
+      </div>
+
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label class="field-label">Cargo o función:</label>
+          <input type="text" class="form-input" name="sec1_cargo">
+        </div>
+        <div class="form-group">
+          <label class="field-label">Teléfono directo o celular:</label>
+          <input type="text" class="form-input" name="sec1_telefono">
+        </div>
+        <div class="form-group">
+          <label class="field-label">WhatsApp comercial para clientes:</label>
+          <input type="text" class="form-input" name="sec1_whatsapp">
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">Correo electrónico principal para solicitudes web:</label>
+          <input type="text" class="form-input" name="sec1_email">
+        </div>
+        <div class="form-group">
+          <label class="field-label">Horarios de atención comercial al público:</label>
+          <input type="text" class="form-input" name="sec1_horarios">
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">Ciudad principal de operación:</label>
+          <input type="text" class="form-input" name="sec1_ciudad_principal" value="Cuenca, Azuay, Ecuador">
+        </div>
+        <div class="form-group">
+          <label class="field-label">Otras ciudades o provincias donde prestan servicios:</label>
+          <input type="text" class="form-input" name="sec1_cobertura">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">
+          <span>Dirección física de oficinas, bodega o showroom:</span>
+          <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec1_dir_na"> No publicar en el sitio web</label></span>
+        </label>
+        <input type="text" class="form-input" name="sec1_direccion">
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Otros datos de contacto o referencias que consideren importantes:</label>
+        <input type="text" class="form-input" name="sec1_otros_contactos">
+      </div>
+
+      <!-- SECCIÓN 02 -->
+      <h2 class="section-title"><span class="sec-index">02</span> Sobre LEKO: Presentación Institucional</h2>
+      <div class="section-subtitle">Mensajes centrales, enfoque de mercado, diferenciadores y trayectoria.</div>
+
+      <div class="form-group">
+        <label class="field-label">¿Cómo describirían a LEKO en pocas palabras?:</label>
+        <textarea class="form-input" name="sec2_descripcion_corta"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">¿A qué se dedica principalmente la empresa en el día a día?:</label>
+        <textarea class="form-input" name="sec2_actividad_principal"></textarea>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Qué tipo de clientes atienden habitualmente?:</label>
+          <div class="checks-panel">
+            <div class="checks-grid-2">
+              <label class="check-item"><input type="checkbox" name="sec2_cli_corp"> Empresas y clientes corporativos</label>
+              <label class="check-item"><input type="checkbox" name="sec2_cli_social"> Bodas y eventos sociales privados</label>
+              <label class="check-item"><input type="checkbox" name="sec2_cli_agencias"> Agencias de publicidad, BTL y marketing</label>
+              <label class="check-item"><input type="checkbox" name="sec2_cli_publico"> Instituciones públicas y universidades</label>
+              <label class="check-item"><input type="checkbox" name="sec2_cli_shows"> Productores de conciertos y espectáculos</label>
+              <label class="check-item"><input type="checkbox" name="sec2_cli_hoteles"> Hoteles, centros de convenciones y salones</label>
+            </div>
+            <div style="margin-top: 8px;">
+              <input type="text" class="form-input" name="sec2_cli_otro" placeholder="Otro tipo de cliente...">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">¿Qué tipo de eventos realizan con mayor frecuencia?:</label>
+          <div class="checks-panel">
+            <div class="checks-grid-2">
+              <label class="check-item"><input type="checkbox" name="sec2_ev_lanzamiento"> Lanzamientos de marca y producto</label>
+              <label class="check-item"><input type="checkbox" name="sec2_ev_congresos"> Congresos, conferencias y seminarios</label>
+              <label class="check-item"><input type="checkbox" name="sec2_ev_bodas"> Bodas, aniversarios y galas privadas</label>
+              <label class="check-item"><input type="checkbox" name="sec2_ev_conciertos"> Conciertos, festivales y fiestas en vivo</label>
+              <label class="check-item"><input type="checkbox" name="sec2_ev_ferias"> Ferias comerciales y exposiciones</label>
+              <label class="check-item"><input type="checkbox" name="sec2_ev_btl"> Activaciones de marca y stands</label>
+            </div>
+            <div style="margin-top: 8px;">
+              <input type="text" class="form-input" name="sec2_ev_otro" placeholder="Otro tipo de evento...">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">¿Qué tipo de eventos consideran su verdadera especialidad o punto fuerte?:</label>
+        <textarea class="form-input" name="sec2_especialidad"></textarea>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Qué diferencia a LEKO de otras empresas del sector en la región?:</label>
+          <textarea class="form-input tall" name="sec2_diferenciacion"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="field-label">¿Qué consideran que hacen especialmente bien?:</label>
+          <textarea class="form-input tall" name="sec2_que_hacen_bien"></textarea>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Cuáles son las principales fortalezas del equipo humano y técnico?:</label>
+          <textarea class="form-input" name="sec2_fortalezas"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="field-label">¿Qué experiencia o trayectoria desean destacar en la web?:</label>
+          <textarea class="form-input" name="sec2_trayectoria_destacar"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Historia de LEKO: Escriba aquí cualquier información sobre el origen, hitos o crecimiento que considere importante:</label>
+        <textarea class="form-input tall" name="sec2_historia"></textarea>
+      </div>
+
+      <!-- SECCIÓN 03 -->
+      <h2 class="section-title"><span class="sec-index">03</span> Misión, Visión y Valores</h2>
+      <div class="section-subtitle">Pilares estratégicos y filosofía de la empresa.</div>
+
+      <div class="callout-box">
+        <strong>Nota de apoyo editorial de Cúpula Systems:</strong> Si actualmente no cuentan con una misión o visión formal redactada, marque la casilla a continuación. Cúpula formulará propuestas de redacción a partir de las respuestas de este documento.
+      </div>
+
+      <div class="checks-panel" style="margin-bottom: 12px;">
+        <label class="check-item">
+          <input type="checkbox" name="sec3_solicitar_redaccion">
+          <strong>Solicitamos que Cúpula Systems elabore la propuesta formal de Misión, Visión y Manifiesto de marca.</strong>
+        </label>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">
+            <span>Misión de LEKO:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec3_mision_na"> No aplica</label></span>
+          </label>
+          <textarea class="form-input" name="sec3_mision"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>Visión de LEKO:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec3_vision_na"> No aplica</label></span>
+          </label>
+          <textarea class="form-input" name="sec3_vision"></textarea>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">Valores que caracterizan al equipo de trabajo:</label>
+          <input type="text" class="form-input" name="sec3_valores">
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>Frase, lema o slogan comercial de la empresa:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec3_slogan_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec3_slogan">
+        </div>
+      </div>
+
+      <!-- SECCIÓN 04 -->
+      <h2 class="section-title"><span class="sec-index">04</span> Servicios</h2>
+      <div class="section-subtitle">Líneas de servicio que LEKO pone a disposición de sus clientes. Elimine o complete según corresponda.</div>
+
+      <div class="table-container">
+        <table class="data-table" id="services-table">
+          <thead>
+            <tr>
+              <th style="width: 25%;">Nombre del Servicio</th>
+              <th style="width: 33%;">Descripción Breve</th>
+              <th style="width: 20%;">Tipo de Cliente o Evento</th>
+              <th style="width: 12%; text-align: center;">¿Es Principal?</th>
+              <th style="width: 10%; text-align: center;">¿Aplica?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="srv_name_1" value="Producción de eventos"></td>
+              <td><input type="text" name="srv_desc_1"></td>
+              <td><input type="text" name="srv_cli_1"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_1"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_1" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_2" value="Sonido profesional"></td>
+              <td><input type="text" name="srv_desc_2"></td>
+              <td><input type="text" name="srv_cli_2"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_2"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_2" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_3" value="Iluminación escénica y decorativa"></td>
+              <td><input type="text" name="srv_desc_3"></td>
+              <td><input type="text" name="srv_cli_3"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_3"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_3" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_4" value="Video y pantallas LED"></td>
+              <td><input type="text" name="srv_desc_4"></td>
+              <td><input type="text" name="srv_cli_4"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_4"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_4" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_5" value="Escenarios y tarimas"></td>
+              <td><input type="text" name="srv_desc_5"></td>
+              <td><input type="text" name="srv_cli_5"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_5"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_5" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_6" value="Estructuras truss y soporte"></td>
+              <td><input type="text" name="srv_desc_6"></td>
+              <td><input type="text" name="srv_cli_6"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_6"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_6" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_7" value="Operación técnica"></td>
+              <td><input type="text" name="srv_desc_7"></td>
+              <td><input type="text" name="srv_cli_7"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_7"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_7" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_8" value="Montaje y desmontaje"></td>
+              <td><input type="text" name="srv_desc_8"></td>
+              <td><input type="text" name="srv_cli_8"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_8"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_8" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="srv_name_9" value="Streaming y transmisión en vivo"></td>
+              <td><input type="text" name="srv_desc_9"></td>
+              <td><input type="text" name="srv_cli_9"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_prio_9"></td>
+              <td style="text-align: center;"><input type="checkbox" name="srv_apply_9"></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button type="button" class="btn-add-row" onclick="addTableRow('services-table', ['srv_name_', 'srv_desc_', 'srv_cli_', 'srv_prio_', 'srv_apply_'])">
+        + Agregar otro servicio
+      </button>
+
+      <div class="form-group">
+        <label class="field-label">
+          <span>¿Ofrecen paquetes o soluciones combinadas habituales?:</span>
+          <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec4_paquetes_na"> No aplica</label></span>
+        </label>
+        <textarea class="form-input" name="sec4_paquetes"></textarea>
+      </div>
+
+      <!-- SECCIÓN 05 -->
+      <h2 class="section-title"><span class="sec-index">05</span> Catálogo de Equipos y Productos</h2>
+      <div class="section-subtitle">Detalle del inventario técnico para estructurar el catálogo web y la calculadora de solicitudes.</div>
+
+      <div class="callout-dark">
+        <div class="callout-dark-title">Opción recomendada: Adjuntar archivos existentes</div>
+        <div class="callout-dark-text">
+          <strong>No es necesario escribir equipo por equipo en este documento si ya cuentan con listas en Excel, PDF o inventarios internos.</strong> Simplemente adjunte sus archivos y nosotros clasificaremos y estructuraremos el catálogo en la plataforma digital.
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">Formatos disponibles para entrega:</label>
+          <div class="checks-panel">
+            <div class="checks-grid-2">
+              <label class="check-item"><input type="checkbox" name="sec5_fmt_excel"> Archivo Excel con inventario</label>
+              <label class="check-item"><input type="checkbox" name="sec5_fmt_pdf"> Catálogo en PDF o brochure</label>
+              <label class="check-item"><input type="checkbox" name="sec5_fmt_fichas"> Fichas técnicas de fabricantes</label>
+              <label class="check-item"><input type="checkbox" name="sec5_fmt_fotos"> Fotos reales de equipos</label>
+              <label class="check-item"><input type="checkbox" name="sec5_fmt_precios"> Lista de precios de alquiler</label>
+              <label class="check-item"><input type="checkbox" name="sec5_fmt_definir"> Por definir</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">Política de precios deseada para el catálogo web:</label>
+          <div class="checks-panel">
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <label class="check-item"><input type="checkbox" name="sec5_pol_publicos"> Mostrar precios públicos en el catálogo</label>
+              <label class="check-item"><input type="checkbox" name="sec5_pol_ocultos"> NO mostrar precios públicos (solo botón Solicitar Cotización)</label>
+              <label class="check-item"><input type="checkbox" name="sec5_pol_paquetes"> Mostrar precios únicamente en paquetes cerrados</label>
+              <label class="check-item"><input type="checkbox" name="sec5_pol_definir"> Por definir en reunión estratégica</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Condiciones especiales de alquiler (operador obligatorio, depósito, transporte no incluido, etc.):</label>
+        <textarea class="form-input" name="sec5_condiciones"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Nombre de archivos adjuntos o enlace de descarga (Drive, Dropbox, WeTransfer):</label>
+        <input type="text" class="form-input" name="sec5_enlace_catalogo">
+      </div>
+
+      <!-- SECCIÓN 06 -->
+      <h2 class="section-title"><span class="sec-index">06</span> Fotografías y Material Visual</h2>
+      <div class="section-subtitle">Material gráfico oficial para el diseño y construcción de la interfaz.</div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">Archivos de logotipo disponibles:</label>
+          <div class="checks-panel">
+            <div class="checks-grid-2">
+              <label class="check-item"><input type="checkbox" name="sec6_logo_vec"> Vectorial (AI, EPS, SVG, PDF)</label>
+              <label class="check-item"><input type="checkbox" name="sec6_logo_png"> PNG fondo transparente</label>
+              <label class="check-item"><input type="checkbox" name="sec6_logo_horiz"> Versión horizontal</label>
+              <label class="check-item"><input type="checkbox" name="sec6_logo_vert"> Versión vertical o isotipo</label>
+              <label class="check-item"><input type="checkbox" name="sec6_logo_claro"> Versión para fondo claro</label>
+              <label class="check-item"><input type="checkbox" name="sec6_logo_oscuro"> Versión para fondo oscuro</label>
+              <label class="check-item"><input type="checkbox" name="sec6_logo_manual"> Manual de marca o colores</label>
+              <label class="check-item"><input type="checkbox" name="sec6_logo_na"> No aplica</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">Tipos de fotografías disponibles para entregar:</label>
+          <div class="checks-panel">
+            <div class="checks-grid-2">
+              <label class="check-item"><input type="checkbox" name="sec6_foto_eventos"> Eventos en vivo con público</label>
+              <label class="check-item"><input type="checkbox" name="sec6_foto_equipos"> Fotos detalladas de equipos</label>
+              <label class="check-item"><input type="checkbox" name="sec6_foto_montaje"> Montajes y pruebas técnicas</label>
+              <label class="check-item"><input type="checkbox" name="sec6_foto_escenarios"> Escenarios y estructuras truss</label>
+              <label class="check-item"><input type="checkbox" name="sec6_foto_equipo"> Equipo humano trabajando</label>
+              <label class="check-item"><input type="checkbox" name="sec6_foto_bodega"> Instalaciones, bodega o flota</label>
+              <label class="check-item"><input type="checkbox" name="sec6_foto_videos"> Videos o reels en alta calidad</label>
+              <label class="check-item"><input type="checkbox" name="sec6_foto_na"> No aplica</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Qué fotografías tienen autorización para utilizarse públicamente?:</label>
+          <input type="text" class="form-input" name="sec6_autorizacion_fotos">
+        </div>
+        <div class="form-group">
+          <label class="field-label">¿Existen eventos importantes que LEKO quiera destacar con fotos especiales?:</label>
+          <input type="text" class="form-input" name="sec6_fotos_destacadas">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Enlace a carpeta digital con fotos y logos (Drive, OneDrive, Dropbox, WeTransfer):</label>
+        <input type="text" class="form-input" name="sec6_enlace_fotos">
+      </div>
+
+      <!-- SECCIÓN 07 -->
+      <h2 class="section-title"><span class="sec-index">07</span> Eventos Destacados y Portafolio</h2>
+      <div class="section-subtitle">Registre entre 5 y 15 proyectos relevantes. No incluya información confidencial de clientes que no pueda publicarse.</div>
+
+      <div class="table-container">
+        <table class="data-table" id="portfolio-table">
+          <thead>
+            <tr>
+              <th style="width: 22%;">Nombre del Evento</th>
+              <th style="width: 8%;">Año</th>
+              <th style="width: 14%;">Ciudad</th>
+              <th style="width: 16%;">Tipo de Evento</th>
+              <th style="width: 16%;">Cliente o Marca</th>
+              <th style="width: 12%; text-align: center;">¿Hay Fotos?</th>
+              <th style="width: 12%; text-align: center;">¿Es Público?</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="port_nom_1"></td>
+              <td><input type="text" name="port_yr_1"></td>
+              <td><input type="text" name="port_city_1"></td>
+              <td><input type="text" name="port_type_1"></td>
+              <td><input type="text" name="port_cli_1"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_foto_1"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_pub_1" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="port_nom_2"></td>
+              <td><input type="text" name="port_yr_2"></td>
+              <td><input type="text" name="port_city_2"></td>
+              <td><input type="text" name="port_type_2"></td>
+              <td><input type="text" name="port_cli_2"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_foto_2"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_pub_2" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="port_nom_3"></td>
+              <td><input type="text" name="port_yr_3"></td>
+              <td><input type="text" name="port_city_3"></td>
+              <td><input type="text" name="port_type_3"></td>
+              <td><input type="text" name="port_cli_3"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_foto_3"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_pub_3" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="port_nom_4"></td>
+              <td><input type="text" name="port_yr_4"></td>
+              <td><input type="text" name="port_city_4"></td>
+              <td><input type="text" name="port_type_4"></td>
+              <td><input type="text" name="port_cli_4"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_foto_4"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_pub_4" checked></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="port_nom_5"></td>
+              <td><input type="text" name="port_yr_5"></td>
+              <td><input type="text" name="port_city_5"></td>
+              <td><input type="text" name="port_type_5"></td>
+              <td><input type="text" name="port_cli_5"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_foto_5"></td>
+              <td style="text-align: center;"><input type="checkbox" name="port_pub_5" checked></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <button type="button" class="btn-add-row" onclick="addTableRow('portfolio-table', ['port_nom_', 'port_yr_', 'port_city_', 'port_type_', 'port_cli_', 'port_foto_', 'port_pub_'])">
+        + Agregar otro evento
+      </button>
+
+      <div class="form-group">
+        <label class="field-label">¿Cuentan con un portafolio en PDF, dossier institucional o lista complementaria?:</label>
+        <input type="text" class="form-input" name="sec7_portafolio_adjunto">
+      </div>
+
+      <!-- SECCIÓN 08 -->
+      <h2 class="section-title"><span class="sec-index">08</span> Clientes, Marcas y Alianzas</h2>
+      <div class="section-subtitle">Marcas y aliados que respaldan la experiencia de LEKO y pueden exhibirse en el sitio web.</div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">
+            <span>¿Qué clientes o empresas autorizan a mostrar en la web?:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec8_cli_na"> No aplica</label></span>
+          </label>
+          <textarea class="form-input tall" name="sec8_clientes_autorizados"></textarea>
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>¿Qué marcas de equipos profesionales desean destacar?:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec8_marcas_na"> No aplica</label></span>
+          </label>
+          <textarea class="form-input tall" name="sec8_marcas_equipos"></textarea>
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">
+            <span>Alianzas comerciales (hoteles, salones, quintas, agencias):</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec8_alianzas_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec8_alianzas">
+        </div>
+        <div class="form-group">
+          <label class="field-label">Disponibilidad de logotipos de clientes y marcas:</label>
+          <div class="checks-panel">
+            <div style="display: flex; gap: 14px;">
+              <label class="check-item"><input type="checkbox" name="sec8_logos_adjuntos"> Se adjuntan archivos</label>
+              <label class="check-item"><input type="checkbox" name="sec8_logos_descargar"> Cúpula puede descargarlos</label>
+              <label class="check-item"><input type="checkbox" name="sec8_logos_na"> No aplica</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 09 -->
+      <h2 class="section-title"><span class="sec-index">09</span> Información para Cotizaciones</h2>
+      <div class="section-subtitle">Criterios técnicos y comerciales que utiliza LEKO para presupuestar eventos y configurar el cotizador interactivo.</div>
+
+      <div class="callout-dark">
+        <div class="callout-dark-title">Solicitud de plantilla de cotización</div>
+        <div class="callout-dark-text">
+          <strong>Si actualmente utilizan una plantilla de cotización en Excel, documento en Word o formato propio de presupuesto, por favor adjúntela junto a este brief.</strong> Esto nos permitirá configurar con exactitud la calculadora inteligente de LEKO Smart Events.
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Qué datos solicitan a un cliente para preparar una propuesta?:</label>
+          <div class="checks-panel">
+            <div class="checks-grid-2">
+              <label class="check-item"><input type="checkbox" name="sec9_req_tipo"> Tipo de evento</label>
+              <label class="check-item"><input type="checkbox" name="sec9_req_fecha"> Fecha y horario del evento</label>
+              <label class="check-item"><input type="checkbox" name="sec9_req_lugar"> Lugar (interior o exterior)</label>
+              <label class="check-item"><input type="checkbox" name="sec9_req_aforo"> Cantidad de asistentes</label>
+              <label class="check-item"><input type="checkbox" name="sec9_req_dimension"> Dimensiones del espacio</label>
+              <label class="check-item"><input type="checkbox" name="sec9_req_tecnica"> Requerimientos técnicos</label>
+              <label class="check-item"><input type="checkbox" name="sec9_req_presup"> Presupuesto estimado</label>
+              <label class="check-item"><input type="checkbox" name="sec9_req_horas_montaje"> Horario de montaje</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">¿Qué factores modifican directamente el precio?:</label>
+          <div class="checks-panel">
+            <div class="checks-grid-2">
+              <label class="check-item"><input type="checkbox" name="sec9_fac_duracion"> Duración (más horas o días)</label>
+              <label class="check-item"><input type="checkbox" name="sec9_fac_aforo"> Mayor aforo de personas</label>
+              <label class="check-item"><input type="checkbox" name="sec9_fac_lugar"> Evento fuera de Cuenca</label>
+              <label class="check-item"><input type="checkbox" name="sec9_fac_acceso"> Dificultad de acceso al lugar</label>
+              <label class="check-item"><input type="checkbox" name="sec9_fac_tecnicos"> Presencia de operadores</label>
+              <label class="check-item"><input type="checkbox" name="sec9_fac_nocturno"> Montaje nocturno</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Régimen de rubros técnicos:</label>
+        <div class="checks-panel">
+          <div class="checks-grid-3">
+            <div>
+              <strong>Transporte:</strong><br>
+              <label class="check-item"><input type="checkbox" name="sec9_transp_sep"> Se cobra por separado</label>
+              <label class="check-item"><input type="checkbox" name="sec9_transp_inc"> Incluido en el paquete</label>
+              <label class="check-item"><input type="checkbox" name="sec9_transp_fuera"> Solo fuera de Cuenca</label>
+            </div>
+            <div>
+              <strong>Montaje y desmontaje:</strong><br>
+              <label class="check-item"><input type="checkbox" name="sec9_mont_inc"> Siempre incluido</label>
+              <label class="check-item"><input type="checkbox" name="sec9_mont_sep"> Se cobra por separado</label>
+              <label class="check-item"><input type="checkbox" name="sec9_mont_comp"> Solo en montajes complejos</label>
+            </div>
+            <div>
+              <strong>Operadores técnicos:</strong><br>
+              <label class="check-item"><input type="checkbox" name="sec9_op_inc"> Incluidos en alquiler</label>
+              <label class="check-item"><input type="checkbox" name="sec9_op_sep"> Tarifa por jornada o turno</label>
+              <label class="check-item"><input type="checkbox" name="sec9_op_opc"> Opcionales a solicitud</label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Explique con sus propias palabras cómo decide qué equipos y servicios necesita un evento:</label>
+        <textarea class="form-input tall" name="sec9_como_decide"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">
+          <span>Condiciones comerciales (anticipos, mínimos de contratación o políticas de reserva):</span>
+          <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec9_cond_na"> No aplica</label></span>
+        </label>
+        <input type="text" class="form-input" name="sec9_condiciones_comerciales">
+      </div>
+
+      <!-- SECCIÓN 10 -->
+      <h2 class="section-title"><span class="sec-index">10</span> Disponibilidad</h2>
+      <div class="section-subtitle">Gestión de inventario para el flujo de reservas y solicitudes en la plataforma.</div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Cómo controlan actualmente qué equipos están disponibles?:</label>
+          <div class="checks-panel">
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <label class="check-item"><input type="checkbox" name="sec10_ctrl_excel"> Archivo de Excel o Google Sheets</label>
+              <label class="check-item"><input type="checkbox" name="sec10_ctrl_cal"> Calendario digital (Google Calendar, Outlook)</label>
+              <label class="check-item"><input type="checkbox" name="sec10_ctrl_soft"> Software especializado de inventario</label>
+              <label class="check-item"><input type="checkbox" name="sec10_ctrl_manual"> Registro manual o pizarra en bodega</label>
+              <label class="check-item"><input type="checkbox" name="sec10_ctrl_verbal"> Coordinación verbal directa del equipo</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">
+            <span>Consideraciones especiales de disponibilidad:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec10_disp_na"> No aplica</label></span>
+          </label>
+          <textarea class="form-input tall" name="sec10_consideraciones"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">
+          <span>Archivo o formato actual para control de disponibilidad:</span>
+          <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec10_arch_na"> No aplica</label></span>
+        </label>
+        <input type="text" class="form-input" name="sec10_archivo_adjunto">
+      </div>
+
+      <!-- SECCIÓN 11 -->
+      <h2 class="section-title"><span class="sec-index">11</span> Experiencia y Marca</h2>
+      <div class="section-subtitle">Percepción visual y personalidad que debe transmitir la nueva experiencia digital.</div>
+
+      <div class="form-group">
+        <label class="field-label">¿Qué sensación quieren transmitir cuando una persona conoce a LEKO por primera vez?:</label>
+        <textarea class="form-input" name="sec11_sensacion"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">Seleccione los conceptos que mejor representen a la marca LEKO:</label>
+        <div class="checks-panel">
+          <div class="checks-grid-4">
+            <label class="check-item"><input type="checkbox" name="sec11_tag_profesional"> Profesional</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_premium"> Premium</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_innovadora"> Innovadora</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_moderna"> Moderna</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_tecnica"> Técnica</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_elegante"> Elegante</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_potente"> Potente</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_creativa"> Creativa</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_confiable"> Confiable</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_cercana"> Cercana</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_corporativa"> Corporativa</label>
+            <label class="check-item"><input type="checkbox" name="sec11_tag_otra"> Otra</label>
+          </div>
+          <div style="margin-top: 8px;">
+            <input type="text" class="form-input" name="sec11_otra_palabra" placeholder="Especifique otro concepto si corresponde...">
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">¿Hay algo que NO quieren que transmita la marca?:</label>
+        <input type="text" class="form-input" name="sec11_no_transmitir">
+      </div>
+
+      <!-- SECCIÓN 12 -->
+      <h2 class="section-title"><span class="sec-index">12</span> Presencia Digital Actual</h2>
+      <div class="section-subtitle">Canales actuales en internet para vincular e integrar en la nueva plataforma.</div>
+
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label class="field-label">
+            <span>Instagram:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec12_ig_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec12_instagram">
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>Facebook:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec12_fb_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec12_facebook">
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>TikTok:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec12_tt_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec12_tiktok">
+        </div>
+      </div>
+
+      <div class="form-grid-3">
+        <div class="form-group">
+          <label class="field-label">
+            <span>LinkedIn:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec12_li_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec12_linkedin">
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>YouTube:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec12_yt_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec12_youtube">
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>Sitio web actual:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec12_web_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec12_sitio_actual">
+        </div>
+      </div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Qué redes desean mantener activas en la nueva web?:</label>
+          <input type="text" class="form-input" name="sec12_redes_activas">
+        </div>
+        <div class="form-group">
+          <label class="field-label">
+            <span>¿Existe contenido anterior en redes que deba conservarse o reutilizarse?:</span>
+            <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec12_reutilizar_na"> No aplica</label></span>
+          </label>
+          <input type="text" class="form-input" name="sec12_reutilizar">
+        </div>
+      </div>
+
+      <!-- SECCIÓN 13 -->
+      <h2 class="section-title"><span class="sec-index">13</span> Dominio y Contacto</h2>
+      <div class="section-subtitle">El dominio es la dirección que tendrá su página en internet (por ejemplo: empresa.com o empresa.ec).</div>
+
+      <div class="form-grid-2">
+        <div class="form-group">
+          <label class="field-label">¿Tienen actualmente un dominio registrado?:</label>
+          <div class="checks-panel">
+            <div style="display: flex; flex-direction: column; gap: 7px;">
+              <label class="check-item"><input type="checkbox" name="sec13_dom_si"> Sí, ya tenemos dominio</label>
+              <label class="check-item"><input type="checkbox" name="sec13_dom_no"> No tenemos dominio aún</label>
+              <label class="check-item"><input type="checkbox" name="sec13_dom_asesoria"> Requerimos asesoría de Cúpula para registrarlo</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="field-label">¿Qué dominio desean utilizar o cuáles opciones alternativas quisieran considerar?:</label>
+          <textarea class="form-input" name="sec13_dominio_deseado"></textarea>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="field-label">
+          <span>Cuentas de correo corporativo que desean habilitar:</span>
+          <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec13_correos_na"> No aplica</label></span>
+        </label>
+        <input type="text" class="form-input" name="sec13_correos_requeridos">
+      </div>
+
+      <!-- SECCIÓN 14 -->
+      <h2 class="section-title"><span class="sec-index">14</span> Documentos Adicionales</h2>
+      <div class="section-subtitle">Checklist de archivos que LEKO adjunta junto a este brief. Si un archivo ya contiene la información, no es necesario volver a escribirla.</div>
+
+      <div class="checks-panel">
+        <div class="checks-grid-2">
+          <label class="check-item"><input type="checkbox" name="sec14_chk_logo"> Logotipo oficial en alta calidad</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_manual"> Manual de marca o guía visual</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_catalogo"> Catálogo general o lista de equipos</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_precios"> Lista de precios de alquiler</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_fichas"> Fichas técnicas de equipos</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_fotos_eq"> Fotografías de equipos</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_fotos_ev"> Fotografías de eventos y montajes</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_portafolio"> Portafolio o presentaciones anteriores</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_cotizador"> Plantilla o cotización actual</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_formatos"> Formatos comerciales actuales</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_servicios"> Información detallada de servicios</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_clientes"> Lista de clientes autorizados</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_marcas"> Logotipos de marcas asociadas</label>
+          <label class="check-item"><input type="checkbox" name="sec14_chk_otros"> Otros documentos</label>
+        </div>
+        <div style="margin-top: 10px;">
+          <input type="text" class="form-input" name="sec14_otros_detalle" placeholder="Especifique otros documentos adjuntos si corresponde...">
+        </div>
+      </div>
+
+      <!-- SECCIÓN 15 -->
+      <h2 class="section-title"><span class="sec-index">15</span> Información que Quieran Destacar</h2>
+      <div class="section-subtitle">Espacio para cualquier elemento diferencial de LEKO que no se haya contemplado anteriormente.</div>
+
+      <div class="form-group">
+        <label class="field-label">
+          <span>¿Existe alguna información, servicio, evento, equipo, logro, cliente o característica de LEKO que considere importante y que no hayamos preguntado?:</span>
+          <span class="field-hint"><label class="check-item"><input type="checkbox" name="sec15_na"> No aplica</label></span>
+        </label>
+        <textarea class="form-input extra-tall" name="sec15_destacados"></textarea>
+      </div>
+
+      <!-- SECCIÓN 16 -->
+      <h2 class="section-title"><span class="sec-index">16</span> Confirmación y Entrega</h2>
+      <div class="section-subtitle">Verificación final previa a la entrega a Cúpula Systems.</div>
+
+      <div class="checks-panel" style="margin-bottom: 16px;">
+        <div style="font-weight: 700; font-size: 11px; text-transform: uppercase; margin-bottom: 8px; color: var(--primary);">
+          Antes de enviar:
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 7px;">
+          <label class="check-item"><input type="checkbox" name="sec16_chk_1"> Hemos proporcionado la información disponible en este documento.</label>
+          <label class="check-item"><input type="checkbox" name="sec16_chk_2"> Hemos adjuntado los archivos disponibles en la carpeta compartida.</label>
+          <label class="check-item"><input type="checkbox" name="sec16_chk_3"> Hemos indicado qué información todavía está pendiente de confirmación.</label>
+          <label class="check-item"><input type="checkbox" name="sec16_chk_4"> Hemos señalado qué información puede publicarse en la web.</label>
+          <label class="check-item"><input type="checkbox" name="sec16_chk_5"> Hemos indicado qué información debe mantenerse privada o confidencial.</label>
+        </div>
+      </div>
+
+      <div class="form-grid-2" style="background: var(--bg-alt); border: 1px solid var(--border); padding: 14px; border-radius: var(--radius);">
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="field-label">Persona responsable de la información:</label>
+          <input type="text" class="form-input" name="sec16_responsable" style="background: #FFF;">
+        </div>
+        <div class="form-group" style="margin-bottom: 0;">
+          <label class="field-label">Cargo:</label>
+          <input type="text" class="form-input" name="sec16_cargo" style="background: #FFF;">
+        </div>
+        <div class="form-group" style="margin-bottom: 0; margin-top: 10px;">
+          <label class="field-label">Fecha de entrega:</label>
+          <input type="text" class="form-input" name="sec16_fecha" style="background: #FFF;">
+        </div>
+        <div class="form-group" style="margin-bottom: 0; margin-top: 10px;">
+          <label class="field-label">Firma o conformidad:</label>
+          <input type="text" class="form-input" name="sec16_firma" style="background: #FFF;">
+        </div>
+      </div>
+
+      <!-- CIERRE INSTITUCIONAL -->
+      <div class="closing-section">
+        <h3 class="closing-title">Gracias por ayudarnos a construir la nueva experiencia digital de LEKO.</h3>
+        <p class="closing-text">
+          Con esta información, Cúpula Systems podrá comenzar a estructurar el contenido y la experiencia digital de LEKO Smart Events, procurando que la nueva plataforma represente fielmente la experiencia, capacidades y propuesta de valor de la empresa.
+        </p>
+        <div style="font-size: 14px; font-weight: 800; letter-spacing: 2px; color: var(--primary);">CÚPULA SYSTEMS</div>
+        <div style="font-size: 11px; font-weight: 700; letter-spacing: 1px; color: var(--gold-dark); margin-top: 2px;">Cúpula Systems x LEKO</div>
+        <div style="font-size: 10px; color: #71717A; margin-top: 4px;">Cuenca, Ecuador</div>
+      </div>
+
+    </form>
+  </div>
+
+  <!-- MODAL DE MENSAJE -->
+  <div class="modal-backdrop" id="custom-modal">
+    <div class="modal-box">
+      <div class="modal-title" id="modal-title">Aviso</div>
+      <div class="modal-message" id="modal-message">Mensaje del sistema</div>
+      <div class="modal-actions" id="modal-actions">
+        <button type="button" class="btn-tool btn-gold" onclick="closeModal()">Aceptar</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPT DE INTERACCIÓN, AUTO-GUARDADO Y EXPORTACIÓN -->
+  <script>
+    const STORAGE_KEY = 'cupula_brief_leko_form_v2';
+
+    // Inicializa listeners y auto-guardado en localStorage
+    window.addEventListener('DOMContentLoaded', () => {
+      loadFormData();
+
+      const form = document.getElementById('brief-form');
+      form.addEventListener('input', debounceSave);
+      form.addEventListener('change', debounceSave);
+    });
+
+    let timeoutId;
+    function debounceSave() {
+      showSavingIndicator('Guardando cambios...');
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        saveFormData();
+        showSavingIndicator('Guardado automático activo');
+      }, 400);
+    }
+
+    function showSavingIndicator(text) {
+      const statusText = document.getElementById('save-status-text');
+      if (statusText) statusText.textContent = text;
+    }
+
+    function saveFormData() {
+      try {
+        const form = document.getElementById('brief-form');
+        const data = {};
+        const elements = form.elements;
+
+        for (let i = 0; i < elements.length; i++) {
+          const el = elements[i];
+          if (!el.name) continue;
+
+          if (el.type === 'checkbox') {
+            data[el.name] = el.checked;
+          } else {
+            data[el.name] = el.value;
+          }
+        }
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      } catch (e) {
+        console.error('Error guardando en localStorage:', e);
+      }
+    }
+
+    function loadFormData() {
+      try {
+        const saved = localStorage.getItem(STORAGE_KEY);
+        if (!saved) return;
+        const data = JSON.parse(saved);
+
+        const form = document.getElementById('brief-form');
+        const elements = form.elements;
+
+        for (let i = 0; i < elements.length; i++) {
+          const el = elements[i];
+          if (!el.name || data[el.name] === undefined) continue;
+
+          if (el.type === 'checkbox') {
+            el.checked = Boolean(data[el.name]);
+          } else {
+            el.value = data[el.name];
+          }
+        }
+      } catch (e) {
+        console.error('Error cargando desde localStorage:', e);
+      }
+    }
+
+    // Modal personalizado sin alert() ni confirm()
+    function showModal(title, message, actionsHtml) {
+      document.getElementById('modal-title').textContent = title;
+      document.getElementById('modal-message').textContent = message;
+      const actionsContainer = document.getElementById('modal-actions');
+
+      if (actionsHtml) {
+        actionsContainer.innerHTML = actionsHtml;
+      } else {
+        actionsContainer.innerHTML = '<button type="button" class="btn-tool btn-gold" onclick="closeModal()">Aceptar</button>';
+      }
+
+      document.getElementById('custom-modal').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('custom-modal').classList.remove('active');
+    }
+
+    function confirmReset() {
+      showModal(
+        'Limpiar formulario',
+        '¿Está seguro de que desea borrar todos los campos de este brief? Esta acción no se puede deshacer.',
+        '<button type="button" class="btn-tool btn-outline" onclick="closeModal()">Cancelar</button>' +
+        '<button type="button" class="btn-tool btn-danger" onclick="executeReset()">Borrar todo</button>'
+      );
+    }
+
+    function executeReset() {
+      localStorage.removeItem(STORAGE_KEY);
+      document.getElementById('brief-form').reset();
+      closeModal();
+      showSavingIndicator('Formulario reiniciado');
+    }
+
+    // Añade dinámicamente filas a tablas editables
+    function addTableRow(tableId, prefixList) {
+      const table = document.getElementById(tableId);
+      const tbody = table.querySelector('tbody');
+      const rowCount = tbody.rows.length + 1;
+
+      const newRow = tbody.insertRow();
+      let html = '';
+
+      if (tableId === 'services-table') {
+        html = `
+          <td><input type="text" name="srv_name_${rowCount}"></td>
+          <td><input type="text" name="srv_desc_${rowCount}"></td>
+          <td><input type="text" name="srv_cli_${rowCount}"></td>
+          <td style="text-align: center;"><input type="checkbox" name="srv_prio_${rowCount}"></td>
+          <td style="text-align: center;"><input type="checkbox" name="srv_apply_${rowCount}" checked></td>
+        `;
+      } else if (tableId === 'portfolio-table') {
+        html = `
+          <td><input type="text" name="port_nom_${rowCount}"></td>
+          <td><input type="text" name="port_yr_${rowCount}"></td>
+          <td><input type="text" name="port_city_${rowCount}"></td>
+          <td><input type="text" name="port_type_${rowCount}"></td>
+          <td><input type="text" name="port_cli_${rowCount}"></td>
+          <td style="text-align: center;"><input type="checkbox" name="port_foto_${rowCount}"></td>
+          <td style="text-align: center;"><input type="checkbox" name="port_pub_${rowCount}" checked></td>
+        `;
+      }
+
+      newRow.innerHTML = html;
+      debounceSave();
+    }
+
+    // Exporta el HTML completo con las respuestas escritas integradas como valores nativos
+    function exportFilledHtml() {
+      saveFormData();
+
+      const clone = document.documentElement.cloneNode(true);
+
+      // Incrusta los valores actuales en los atributos value / checked / textContent
+      const originalForm = document.getElementById('brief-form');
+      const cloneForm = clone.querySelector('#brief-form');
+
+      const origInputs = originalForm.querySelectorAll('input, textarea');
+      const cloneInputs = cloneForm.querySelectorAll('input, textarea');
+
+      origInputs.forEach((orig, idx) => {
+        const target = cloneInputs[idx];
+        if (!target) return;
+
+        if (orig.type === 'checkbox') {
+          if (orig.checked) {
+            target.setAttribute('checked', 'checked');
+          } else {
+            target.removeAttribute('checked');
+          }
+        } else if (orig.tagName.toLowerCase() === 'textarea') {
+          target.textContent = orig.value;
+        } else {
+          target.setAttribute('value', orig.value);
+        }
+      });
+
+      const fullHtml = '<!DOCTYPE html>\n' + clone.outerHTML;
+      const blob = new Blob([fullHtml], { type: 'text/html;charset=utf-8' });
+      const downloadUrl = URL.createObjectURL(blob);
+
+      const link = document.createElement('a');
+      link.href = downloadUrl;
+      link.download = 'Brief_LEKO_Completado.html';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(downloadUrl);
+
+      showModal(
+        'Descarga completada',
+        'Se ha descargado el archivo "Brief_LEKO_Completado.html" con todas sus respuestas guardadas. Puede abrirlo en cualquier navegador para continuar editándolo, enviarlo directamente a Cúpula Systems o guardarlo en formato PDF usando Ctrl + P o Cmd + P.',
+        '<button type="button" class="btn-tool btn-gold" onclick="closeModal()">Entendido</button>'
+      );
+    }
+  </script>
+</body>
+</html>
