@@ -1,4 +1,5 @@
 # syntax=docker/dockerfile:1
 FROM nginx:alpine
-COPY systems/leko/index.html systems/leko/app.js systems/leko/styles.css /usr/share/nginx/html/
+COPY nginx.conf /etc/nginx/conf.d/default.conf
+COPY systems/ /usr/share/nginx/html/systems/
 EXPOSE 80
